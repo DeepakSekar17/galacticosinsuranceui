@@ -4,6 +4,7 @@ import { Container,Row,Col,Button } from 'react-bootstrap';
 import './All.css';
 import Collapsible from 'react-collapsible';
 import Select from 'react-select';
+import {get} from './httpUtils';
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -100,6 +101,38 @@ export class Auto extends React.Component {
       })
   }
   
+  searchVin(){
+	  let vin = this.state.quoteInformation.vin;
+	  if(null != vin && vin.length > 0){
+		  alert(vin);
+		  
+		  const headers = {}
+	        let url = 'http://54.197.209.190:8080/autoinsurance/getVin?vin='+vin;
+	    
+	        headers['Content-Type'] = 'application/json';
+	            
+	        get(url, headers)
+	        .then(res => {
+	            console.log(res);
+	            this.setState({
+	            	defaultLoadJson : res	
+	            });
+	            const soCodes = this.state.availableSoCodes;
+	       	 	const soCode = soCodes.length ? [soCodes[0]] : [];
+	       	 	if( null != soCodes && soCodes.length > 0 ){
+	       	 	var soCodeObj = res[soCode];
+	            this.setState({
+	            	availableSalesPerson: soCodeObj['selectedSalesperson'],
+	            	availableBaseModel: soCodeObj['selectedBaseModel'],
+	            })	
+	       	 	}
+	        });
+	        
+	  }else{
+		 alert("Please enter VIN");
+	  }
+  }
+  
   callNext(step) {
 	  alert(step);
 	  this.setState({
@@ -176,7 +209,7 @@ export class Auto extends React.Component {
 	  	    			<input value={this.state.quoteInformation.vin} style={{height:'10px', textTransform: 'uppercase', fontSize: '12px'}} onChange={(e) => this.handlevin(e.target.value)} className="form-control"/>
   				</Col>
 	    			<Col xs lg="2">
-	    			<Button style={{backgroundColor: '#0066a1',borderColor: '#0066a1'}} onClick={() => this.openStart()}>Search VIN</Button>
+	    			<Button style={{backgroundColor: '#0066a1',borderColor: '#0066a1'}} onClick={() => this.searchVin()}>Search VIN</Button>
 					</Col>
 		        </Row>
 		        <br/>
