@@ -68,3 +68,17 @@
 	color: #555;
 	right: 18px;
 }
+
+
+.hARbcS {
+	margin-right: 1em!important;
+}
+
+.conversation-container > .header {
+  background-color: red;
+}
+
+.message > .response {
+  background-color: black;
+  color: white;
+}

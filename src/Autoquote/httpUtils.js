@@ -12,6 +12,7 @@ function handleErrors(response) {
 
 export function get(url, headers = {}) {
     return fetch(url, {
+    	mode: 'cors',
         credentials: 'include',
         cache: 'no-cache',
         headers: headers
@@ -44,6 +45,7 @@ export function post(url, payload, headers = {}) {
                 credentials: 'include',
                 method: 'POST',
                 body: payload,
+                mode: 'cors',
                 cache: 'no-cache',
                 headers: headers
              })

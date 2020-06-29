@@ -8,6 +8,7 @@ import {Home} from './Autoquote/Home';
 import {About} from './Autoquote/About';
 import {NoMatch} from './Autoquote/NoMatch';
 import {Auto} from './Autoquote/Auto';
+import {Contact} from './Autoquote/Contact';
 import Sidebar from './Autoquote/Sidebar';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -23,6 +24,7 @@ function App() {
 		    <Route exact path="/" component={Home} />
 		    <Route path="/about" component={About} />
 		    <Route path="/auto" component={Auto} />
+		    <Route path="/contact" component={Contact} />
 		    <Route component={NoMatch} />
 		  </Switch>
 		  </Router>

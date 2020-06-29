@@ -19,11 +19,10 @@ code {
 	color: #444;
 	text-align: center;
 }
-/*Container*/
+/*Container max-width: 800px;*/
 .container {
 	margin: 36px auto;
 	width: 100%;
-	max-width: 800px;
 }
 .search-label {
 	position: relative;

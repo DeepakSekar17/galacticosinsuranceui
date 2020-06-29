@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import ChatApp from './ChatApp.js';
 /* This defines the actual bar going down the screen */
 const StyledSideNav = styled.div`
   
@@ -75,7 +76,10 @@ class SideNav extends React.Component {
 		        items.map((item) => {
 		          /* Return however many NavItems in array to be rendered */
 		          return (
+		        		  <div>
 		            <NavItem path={item.path} name={item.name} css={item.css} onItemClick={this.onItemClick} /* Simply passed an entire function to onClick prop */ active={item.path === activePath} key={item.key}/>
+		          <br/>
+		          </div>
 		          )
 		        })
 		      }
@@ -109,5 +113,6 @@ export const Home = (props) => (
   <GridWrapperColumns>
   <SideNav></SideNav>
   </GridWrapperColumns>
+  <ChatApp/>
   </div>
 )
