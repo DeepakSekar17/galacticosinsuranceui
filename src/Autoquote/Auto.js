@@ -9,7 +9,7 @@ import ChatApp from './ChatApp.js';
 
 import "react-datepicker/dist/react-datepicker.css";
 
-let urlBase = 'http://54.197.209.190:8080/';
+let urlBase = 'http://localhost:8080/';
 
 const options = [
 	  { value: '', label: '' },

@@ -31,7 +31,7 @@ class ChatApp extends Component {
     const postData = {...this.state.chatMessage};
     postData.newMessage=newMessages;
     let payload = JSON.stringify(postData);
-    let url = 'http://54.197.209.190:8080/autoinsurance/getChatInfo';
+    let url = 'http://localhost:8080/autoinsurance/getChatInfo';
     headers['Content-Type'] = 'application/json';
     post(url, payload, headers)
     .then(res => {
